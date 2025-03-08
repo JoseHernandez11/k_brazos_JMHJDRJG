@@ -1,7 +1,16 @@
 """
 Module: arms/armbinomial.py
 Description: Contains the implementation of the ArmBinomial class for the binomial distribution arm.
+
+
+Author: José María Hernández Nieto
+Email: josemaria.hernandezn@um.es
+Date: 2025/03/07
+
+Note: Chat-GPT ha sido utilizado para formatear el código y darle la estructura de clases de acuerdo con la proporcionada como código base.
+El alumno ha comprobado que la lógica y fórmulas de la distribución son las correctas acorde las establecidas en el enunciado.
 """
+
 
 
 import numpy as np

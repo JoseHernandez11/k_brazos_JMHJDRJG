@@ -1,15 +1,13 @@
 """
-Module: algorithms/epsilon_greedy.py
-Description: Implementación del algoritmo epsilon-greedy para el problema de los k-brazos.
+Module: algorithms/gradient_ascent.py
+Description: Implementación de los algoritmos Softmax, gradiente de preferencias para el problema de los k-brazos.
 
-Author: Luis Daniel Hernández Molinero
-Email: ldaniel@um.es
-Date: 2025/01/29
+Author: José María Hernández Nieto
+Email: josemaria.hernandezn@um.es
+Date: 2025/03/07
 
-This software is licensed under the GNU General Public License v3.0 (GPL-3.0),
-with the additional restriction that it may not be used for commercial purposes.
-
-For more details about GPL-3.0: https://www.gnu.org/licenses/gpl-3.0.html
+Note: Chat-GPT ha sido utilizado para formatear el código y darle la estructura de clases de acuerdo con la proporcionada como código base.
+El alumno ha comprobado que la lógica, fórmulas y pasos del algoritmo son los correctos acorde a los estudiados en clase.
 """
 
 import numpy as np
