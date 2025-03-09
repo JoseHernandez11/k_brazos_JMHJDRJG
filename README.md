@@ -1,7 +1,7 @@
 # Práctica 1: Bandido de k-brazos
 
 ## Información
-- **Alumnos:** Hernádez Nieto, José María; Rodríguez Garrido, Juan de Dios; García Serrano, Javier
+- **Alumnos:** Hernández Nieto, José María; Rodríguez Garrido, Juan de Dios; García Serrano, Javier
 - **Asignatura:** Extensiones de Machine Learning
 - **Curso:** 2024/2025
 - **Grupo:** JMHJDRJG
@@ -23,6 +23,6 @@ En este repositorio, se estudia el rendimiento de distintos algoritmos diseñado
 ## Tecnologías Utilizadas
 - **Lenguaje:** Python
 - **Librerías:**
-  - `numpy~=2.2.2`
-  - `seaborn~=0.13.2`
-  - `matplotlib~=3.10.0`
+  - `numpy==1.26.4`
+  - `seaborn==0.13.2`
+  - `matplotlib==3.10.0`
