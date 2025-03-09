@@ -19,7 +19,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from typing import List, Dict, Any
 from algorithms import Algorithm, EpsilonGreedy, UCB1, UCB2, Softmax, GradientBandit
-
+import os
 
 def get_algorithm_label(algo: Algorithm) -> str:
     """
@@ -49,7 +49,7 @@ def get_algorithm_label(algo: Algorithm) -> str:
 
 
 
-def plot_average_rewards(steps: int, rewards: np.ndarray, algorithms: List[Algorithm]):
+def plot_average_rewards(steps: int, rewards: np.ndarray, algorithms: List[Algorithm], dist = "Normal"):
     """
     Genera la gráfica de Recompensa Promedio vs Pasos de Tiempo.
 
@@ -64,15 +64,18 @@ def plot_average_rewards(steps: int, rewards: np.ndarray, algorithms: List[Algor
         label = get_algorithm_label(algo)
         plt.plot(range(steps), rewards[idx], label=label, linewidth=2)
 
+    plot_name = 'Recompensa Promedio vs Pasos de Tiempo '.replace(" ","_") + str (dist) + "-" + str(label)+ ".png"
     plt.xlabel('Pasos de Tiempo', fontsize=14)
     plt.ylabel('Recompensa Promedio', fontsize=14)
-    plt.title('Recompensa Promedio vs Pasos de Tiempo', fontsize=16)
+    plt.title('Recompensa Promedio vs Pasos de Tiempo ' + str (dist), fontsize=16)
     plt.legend(title='Algoritmos')
     plt.tight_layout()
+    #plt.savefig(os.path.join("plots", plot_name))
     plt.show()
+    
 
 
-def plot_optimal_selections(steps: int, optimal_selections: np.ndarray, algorithms: List[Algorithm]):
+def plot_optimal_selections(steps: int, optimal_selections: np.ndarray, algorithms: List[Algorithm], dist = "Normal"):
     """
     Genera la gráfica de Porcentaje de Selección del Brazo Óptimo vs Pasos de Tiempo.
 
@@ -87,16 +90,18 @@ def plot_optimal_selections(steps: int, optimal_selections: np.ndarray, algorith
         label = get_algorithm_label(algo)
         plt.plot(range(steps), optimal_selections[idx], label=label, linewidth=2)
 
+    plot_name = '% Selecciones óptimas vs Pasos de Tiempo  '.replace(" ","_") + str (dist) + "-" + str(label)+ ".png"
     plt.xlabel('Pasos de Tiempo', fontsize=14)
     plt.ylabel('Porcentaje de selecciones óptimas', fontsize=14)
-    plt.title('% Selecciones óptimas vs Pasos de Tiempo', fontsize=16)
+    plt.title('% Selecciones óptimas vs Pasos de Tiempo (' + str (dist) +  ")", fontsize=16)
     plt.legend(title='Algoritmos')
     plt.tight_layout()
+    #plt.savefig(os.path.join("plots",plot_name))
     plt.show()
 
 
 def plot_arm_statistics(arm_stats: List[Dict[int, Dict[str, Any]]],
-                        algorithms: List[str]):
+                        algorithms: List[str], dist= "Normal"):
     """
     Genera gráficas separadas con las estadísticas de cada brazo para distintos algoritmos.
     
@@ -176,10 +181,10 @@ def plot_arm_statistics(arm_stats: List[Dict[int, Dict[str, Any]]],
         plt.xticks(centers, bar_labels, rotation=45, ha='right')
         
         # Añadimos títulos y etiquetas de ejes
-        plt.title(f"Estadísticas de brazos - {get_algorithm_label(algorithms[i])}")
+        plt.title(f"Estadísticas de brazos - {get_algorithm_label(algorithms[i])} - {str(dist)}")
         plt.xlabel("Brazo")
         plt.ylabel("Promedio de Ganancias (avg_reward)")
-        
+        plot_name = f"Estadísticas de brazos - {get_algorithm_label(algorithms[i])} - {str(dist)}".replace(" ","_")+ ".png"
         # Añadimos una rejilla para el eje Y
         plt.grid(axis='y', linestyle='--', alpha=0.7)
         
@@ -187,9 +192,10 @@ def plot_arm_statistics(arm_stats: List[Dict[int, Dict[str, Any]]],
         plt.tight_layout()
         
         # Mostramos la gráfica
+        #plt.savefig(os.path.join("plots", plot_name))
         plt.show()
 
-def plot_regret(steps: int, regret_accumulated: np.ndarray, algorithms: List[Algorithm], c_theoretical: float = None):
+def plot_regret(steps: int, regret_accumulated: np.ndarray, algorithms: List[Algorithm], c_theoretical: float = None, dist= "Normal"):
     """
     Genera la gráfica de Regret Acumulado vs Pasos de Tiempo
     :param steps: Número de pasos de tiempo.
@@ -222,9 +228,11 @@ def plot_regret(steps: int, regret_accumulated: np.ndarray, algorithms: List[Alg
             color='black'
         )
 
+    plot_name = 'Rechazo acumulado Promedio vs Pasos de Tiempo '.replace(" ","_") + str (dist) +   "_" + str(label)+".png"
     plt.xlabel('Pasos de Tiempo', fontsize=14)
     plt.ylabel('Rechazo acumulado promedio', fontsize=14)
-    plt.title('Rechazo acumulado Promedio vs Pasos de Tiempo', fontsize=16)
+    plt.title('Rechazo acumulado Promedio vs Pasos de Tiempo  (' + str (dist) +  ")" , fontsize=16)
     plt.legend(title='Algoritmos')
     plt.tight_layout()
+    #plt.savefig(os.path.join("plots",plot_name))
     plt.show()

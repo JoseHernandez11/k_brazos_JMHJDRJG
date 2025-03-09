@@ -41,7 +41,7 @@ class UCB1(Algorithm):
             return self.total_pulls
         
         # Aplicación de la fórmula UCB1 basada en la Desigualdad de Hoeffding
-        ucb_values = self.values + self.c * np.sqrt(( np.log(self.total_pulls)) / (self.counts + 1e-5)) # Se mete el 1e-5 para no dividir por cero cuanto self.counts lo es
+        ucb_values = self.values + self.c * np.sqrt(( np.log(self.total_pulls)) / (self.counts + 1e-5)) # Se mete el 1e-5 para no dividir por cero cuanto self.counts lo sea
 
         # Seleccionamos el brazo con el valor UCB más alto
         return np.argmax(ucb_values)
